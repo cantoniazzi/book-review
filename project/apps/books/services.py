@@ -12,4 +12,4 @@ def get_book_average_ratting_by_isbn(isbn):
         book = return_json.json()
         average_ratting = book['books'][0]['average_rating']
         return average_ratting
-    return None
+    return ''

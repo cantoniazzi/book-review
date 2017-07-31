@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Books Table Ratting - Tag & GoodReads</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    #div-loader {
+      position: fixed;
+      left: 30%;
+      top: 200px;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Tag - books info</h2>
+    <p>Listagem com informações dos livros da TAG:</p>   
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Autor</th>
+          <th>Curador</th>
+          <th>Edição</th>
+          <th>Número de páginas</th>
+          <th>Média TAG</th>
+          <th>Ḿédia GoodReads</th>
+        </tr>
+      </thead>
+      <tbody id="result-books">
+          <div id="div-loader" class="text-center">
+            <h3>Aguarde enquanto os dados são carregados</h3>
+            <img style="width:50%" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"/>
+          </div>
+      </tbody>
+    </table>
+  </div>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      var data_html;
+      var data_return;
+      $.ajax({
+            type: "GET",
+            data: {},
+            url: "http://127.0.0.1:8000/api/books/?format=json",
+            success: function(data){
+              $('#div-loader').hide();
+              $.each(data, function(i, item) {
+                  data_html = `<tr><td><img width="40" src="${item.cover.url}"/></td><td>${item.name}</td>`;
+                  data_html += `<td>${item.author}</td><td>${item.curator}</td>`;
+                  data_html += `<td>${item.edition}</td><td>${item.pages}</td>`;
+                  data_html += `<td>${item.averageRatting}</td><td>${item.goodReadsAverageRatting}</td></tr>`;
+                  $("#result-books").append(data_html); 
+              });
+            }
+        });
+    });
+  </script>
+</body>
+</html>

@@ -42,8 +42,8 @@ class Book(models.Model):
     curator = models.CharField('Curador', max_length=200)
     edition = models.CharField('Edição', max_length=100)
     pages = models.IntegerField(verbose_name='Número de páginas', default=1)
-    numRatings = models.IntegerField(default=1)
-    totalRatings = models.IntegerField(default=1)
+    num_ratings = models.IntegerField(default=1)
+    total_ratings = models.IntegerField(default=1)
     blocked = models.BooleanField(blank=True, default=False)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
     updated_at = models.DateTimeField('Atualizado em', auto_now=True)
@@ -51,8 +51,8 @@ class Book(models.Model):
     objects = BookManager()
 
     def average_ratting(self):
-        result = round((self.totalRatings / self.numRatings),
-                       2) if self.numRatings > 0 else 0
+        result = round((self.total_ratings / self.num_ratings),
+                       2) if self.num_ratings > 0 else 0
         return result
 
     def good_reads_average_ratting(self):
@@ -72,4 +72,4 @@ class Book(models.Model):
     class Meta:
         verbose_name = 'Book'
         verbose_name_plural = 'Books'
-        # ordering = ['name', 'author']
+        ordering = ['name', 'author']

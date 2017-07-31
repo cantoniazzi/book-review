@@ -2,9 +2,20 @@ import json
 import os
 
 from django.conf import settings
+from django.contrib.auth.admin import User
 
 from .models import Book, Cover
 
+
+def create_super_user():
+    superuser = User()
+    superuser.is_active = True
+    superuser.is_superuser = True
+    superuser.is_staff = True
+    superuser.username = 'admin'
+    superuser.email = 'admin@admin.com.br'
+    superuser.set_password('admin')
+    superuser.save()
 
 def import_json_books():
     with open(os.path.join(settings.BASE_DIR, '../database/livros.json')) as json_data:
@@ -33,9 +44,11 @@ def create_books():
         book.isbn = book_json['isbn']
         book.edition = book_json['edition']
         book.pages = book_json['pages']
-        book.numRatings = book_json['numRatings']
-        book.totalRatings = book_json['totalRatings']
+        book.num_ratings = book_json['numRatings']
+        book.total_ratings = book_json['totalRatings']
         book.blocked = book_json['blocked']
         book.created_at = book_json['createdAt']
         book.updated_at = book_json['updatedAt']
         book.save()
+
+
