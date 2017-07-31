@@ -29,3 +29,13 @@ cd <repo-path>
 source venv/bin/activate
 pip install -r requirements/dev.txt
 
+
+## API
+To show api endpoint access:
+http://127.0.0.1:8000/api/books/
+
+
+## Template list books consume API
+To access an information table with data API data, go to:
+http://127.0.0.1:8000/books/table-list/
+
