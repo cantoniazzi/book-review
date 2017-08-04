@@ -87,7 +87,7 @@ venv/*
 !venv/emptt
 
 # database
-database/*
+# database/*
 
 # Spyder project settings
 .spyderproject
