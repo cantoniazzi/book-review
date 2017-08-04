@@ -10,12 +10,12 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 class BookManager(models.Manager):
 
     def books_ordered_by_edition(self):
-        abbr_to_num = {name: num for num,
+        abbr_to_num = {name.lower(): num for num,
                        name in enumerate(calendar.month_abbr) if num}
         queryset = super().get_queryset()
 
         query_sorted = sorted(queryset, key=lambda b: int(
-            abbr_to_num[b.edition[:3]]), reverse=True)
+            abbr_to_num[b.edition[:3].lower()]), reverse=True)
         id_list_sorted = [book.id for book in query_sorted]
 
         edition_year_order = {
