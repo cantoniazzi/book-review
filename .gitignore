@@ -87,7 +87,7 @@ venv/*
 !venv/emptt
 
 # database
-# database/*
+database/*.sqlite3
 
 # Spyder project settings
 .spyderproject
