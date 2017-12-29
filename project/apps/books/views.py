@@ -14,6 +14,4 @@ class BookViewSet(viewsets.ModelViewSet):
 
 def list_table(request):
     template_name = 'books/list.html'
-    # imoveis = Imovel.objects.exclude(foto__isnull=True).exclude(foto__exact='')
-    # context = {'imoveis': imoveis}
     return render(request, template_name, {})
