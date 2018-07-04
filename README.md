@@ -34,6 +34,7 @@ You need the GoodReads keys in your environment variables:
 ```
 export GOOD_READS_API_SECRET=<your goodreads API secret>
 export GOOD_READS_API_KEY=<your goodreads API key>
+```
 
 ## Run
 
