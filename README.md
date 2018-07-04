@@ -30,7 +30,16 @@ source venv/bin/activate
 pip install -r requirements/dev.txt
 ```
 
+You need the GoodReads keys in your environment variables:
+```
+export GOOD_READS_API_SECRET=<your goodreads API secret>
+export GOOD_READS_API_KEY=<your goodreads API key>
 
+## Run
+
+```
+python manage.py runserver
+```
 
 ## API
 
@@ -38,8 +47,6 @@ To show api endpoint access:
 ```
 http://127.0.0.1:8000/api/books/
 ```
-
-
 
 ## Template list books consume API
 
